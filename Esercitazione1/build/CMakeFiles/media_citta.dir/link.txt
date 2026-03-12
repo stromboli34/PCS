@@ -1,0 +1,1 @@
+/usr/bin/c++  -Wall -Wshadow -Wl,--dependency-file=CMakeFiles/media_citta.dir/link.d CMakeFiles/media_citta.dir/media_citta.cpp.o -o media_citta

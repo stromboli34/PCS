@@ -1,0 +1,3 @@
+/home/pcsdocker/Data/PCS/Esercitazione1/build/CMakeFiles/media_citta.dir
+/home/pcsdocker/Data/PCS/Esercitazione1/build/CMakeFiles/edit_cache.dir
+/home/pcsdocker/Data/PCS/Esercitazione1/build/CMakeFiles/rebuild_cache.dir
