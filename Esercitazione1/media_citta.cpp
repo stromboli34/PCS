@@ -4,7 +4,11 @@
 using namespace std;
 
 int main(int argc, const char*argv[]){
-   ifstream ifs(argv[1]);
+   if (argc < 2)
+    {
+        cerr << "Non hai inserito il nome del file da leggere\n"; 
+        return 1;
+    }fstream ifs(argv[1]);
    if(ifs.is_open()){
     for (int p=1;p<=3;p++){
 
