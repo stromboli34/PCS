@@ -1,1 +1,0 @@
-/usr/bin/c++  -Wall -Wshadow -Wl,--dependency-file=CMakeFiles/razionali.dir/link.d CMakeFiles/razionali.dir/main.cpp.o -o razionali
