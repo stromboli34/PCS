@@ -6,7 +6,7 @@
 #include "select_sort.h"
 #include "randfiller.h"
 #include <cmath>
-
+#include <algorithm>
  std::vector<int> genera_vettore(int lunghezza){
     randfiller rf;    
         
