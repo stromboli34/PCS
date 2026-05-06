@@ -7,6 +7,5 @@ Quicksort, che risulterebbe dunque la migliore scelta per vettori di grandi dime
 
 Analizzando invece i risultati delle misure introducendo un Quicksort modificato (in cui, nel momento in cui il frammento ricorsivo
 ha una dimensione inferiore ai 35 elementi, viene chiamato un Insertionsort), si nota che questa nuova implementazione, come ci si poteva
-aspettare, è prossima all'Insertionsort per vettori più piccoli mentre lo è al Quicksort puro per vettori più grandi.
-Non è veloce esattamente come i due metodi genitori probabilmente per il fatto che vi è una condizione "if" da controllare ad ogni
-ricursione.
+aspettare, è veloce all'incirca come Insertionsort (non esattamente, viste le condizioni "if" da verificare) nel caso di vettori di dimensione
+ridotta, mentre è parallela (anche se leggermente più lenta,sempre considerando il peso delle condizioni "if") nel caso di vettori di lunghezza maggiore.
