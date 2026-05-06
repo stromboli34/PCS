@@ -1,0 +1,12 @@
+Da vari confronti tra metodi, di cui ho riportato 4 grafici plottati su MatLab, è facile evincere di come, per vettori piccoli,
+i metodi sono tutti comparabili fra di loro: la classifica, fino ad una dimensione dei vettori di circa 35-40 elementi, flutta continuamente,
+con l'Insertionsort risultando leggermente migliore e il Mergesort che in questa fascia di dimensioni, risulta nettamente il peggiore.
+Per vettori più grandi, i metodi si differenziano notevolemente: il meno efficente divente il Bubblesort, seguito da Selectionsort,
+Mergesort (che ha di molto migliorato la sua potenza), Insertionsort, Native (il sort nativo della libreria standard), ed infine il
+Quicksort, che risulterebbe dunque la migliore scelta per vettori di grandi dimensioni.
+
+Analizzando invece i risultati delle misure introducendo un Quicksort modificato (in cui, nel momento in cui il frammento ricorsivo
+ha una dimensione inferiore ai 35 elementi, viene chiamato un Insertionsort), si nota che questa nuova implementazione, come ci si poteva
+aspettare, è prossima all'Insertionsort per vettori più piccoli mentre lo è al Quicksort puro per vettori più grandi.
+Non è veloce esattamente come i due metodi genitori probabilmente per il fatto che vi è una condizione "if" da controllare ad ogni
+ricursione.

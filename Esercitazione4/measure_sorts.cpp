@@ -25,6 +25,7 @@ int main(){
     std::vector<int> vec_1=vec;
     std::vector<int> vec_2=vec;
     std::vector<int> vec_3=vec;
+    
 
     t.tic();
     bubble_sort(vec_1);

@@ -1,0 +1,7 @@
+/home/pcsdocker/Data/PCS/Esercitazione4/build/CMakeFiles/measure_sorts.dir
+/home/pcsdocker/Data/PCS/Esercitazione4/build/CMakeFiles/Test_bubble.dir
+/home/pcsdocker/Data/PCS/Esercitazione4/build/CMakeFiles/Test_insert.dir
+/home/pcsdocker/Data/PCS/Esercitazione4/build/CMakeFiles/Test_select.dir
+/home/pcsdocker/Data/PCS/Esercitazione4/build/CMakeFiles/test.dir
+/home/pcsdocker/Data/PCS/Esercitazione4/build/CMakeFiles/edit_cache.dir
+/home/pcsdocker/Data/PCS/Esercitazione4/build/CMakeFiles/rebuild_cache.dir
