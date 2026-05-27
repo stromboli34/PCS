@@ -1,1 +1,0 @@
-Ho utilizzato l'aiuto dell'AI Gemini per quanto riguarda la parte di stampa in .dot e per correzioni varie, oltre che per consigli su quale fosse l'implementazione più sensata.
