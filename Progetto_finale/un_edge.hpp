@@ -1,7 +1,7 @@
 #pragma once
 
-#include<iostream>
-#include<stdexcept> //per invalid_argument
+#include <iostream>
+#include <stdexcept> //per invalid_argument
 
 template<typename N, typename W = double>
 class un_edge {

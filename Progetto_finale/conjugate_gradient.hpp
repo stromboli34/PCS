@@ -25,11 +25,7 @@ cg_result conjugate_gradient(const Eigen::MatrixXd& A, const Eigen::VectorXd& b)
     //definita positiva e il determinante è strettamente positivo:
     //la singolarità capita solo se hai sbagliato a scegliere i cicli e ne hai inserito uno dipendente dagli altri.
 
-    const double k = condA(A);
-    if (k > 1.0e12){
-        std::cout << "Matrice mal condizionata (cond = "<< k << "), il risultato può essere impreciso" << "\n";
-    }
-
+   
   const int n = static_cast<int>(b.size());
   Eigen::VectorXd x = Eigen::VectorXd::Zero(n);
   Eigen::VectorXd res = b - A * x;
@@ -39,7 +35,7 @@ cg_result conjugate_gradient(const Eigen::MatrixXd& A, const Eigen::VectorXd& b)
   unsigned int it = 0;
   const double res_tol = 1.0e-12;
 
-  Eigen::VectorXd p= res;
+  Eigen::VectorXd p = res;
 
   while (it < it_max &&
          res.norm() > res_tol * res_norm_0)
@@ -47,10 +43,10 @@ cg_result conjugate_gradient(const Eigen::MatrixXd& A, const Eigen::VectorXd& b)
     const double alpha_k = ((p.transpose() * res) / (p.transpose() * A * p)).value();
 
     x = x + (alpha_k * p);
-    res = b-(A*x);
+    res = b - (A * x);
 
     const double beta_k = ((p.transpose() * A * res)/(p.transpose() * A * p)).value();
-    p=res-(beta_k*p);
+    p = res - (beta_k * p);
 
     it++;
   }

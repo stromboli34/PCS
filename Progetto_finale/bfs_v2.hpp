@@ -6,12 +6,6 @@
 #include <algorithm>   // per std::reverse
 #include <map>
 
-// ---------------------------------------------------------------------------
-// outputBFS: stesso ruolo di outputDijkstra, ma le distanze sono in NUMERO DI
-// ARCHI (la BFS lavora su grafo non pesato: ogni arco vale 1). Tengo apposta
-// la stessa interfaccia di outputDijkstra (.cammino(dest) e .stampa_distanze())
-// cosi f_m_c_s_t deve solo cambiare la riga della chiamata.
-// ---------------------------------------------------------------------------
 template<typename T>
 struct outputBFS {
     T inizio;
@@ -38,10 +32,7 @@ struct outputBFS {
     }
 };
 
-// ---------------------------------------------------------------------------
-// BFS su un_graph<T,W>: restituisce predecessori e distanze (in numero di archi)
-// per ricostruire il cammino minimo tramite outputBFS::cammino().
-// ---------------------------------------------------------------------------
+
 template<typename T, typename W>
 outputBFS<T> BFS(const un_graph<T, W>& grafo, const T nodo_partenza) {
     std::map<T, int> distanze;

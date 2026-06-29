@@ -1,8 +1,11 @@
 #include <iostream>
 #include <string>
+#include <stdexcept>
 #include <Eigen/Dense>
 #include "un_graph.hpp"
-#include "auxiliary.hpp"
+#include "input_read.hpp"
+#include "Cicli_dfs.hpp"
+#include "Cicli_depina.hpp"
 #include "system_constructor.hpp"
 #include "conjugate_gradient.hpp"
 
@@ -10,6 +13,12 @@ int main(int argc, char** argv) {
     if (argc < 2) {
         std::cerr << "Uso: " << argv[0] << " <netlist.txt> [dfs|depina]\n";
         return 1;
+    }
+    if (argc > 3) {
+        // Sono previsti al più due argomenti (netlist + metodo): avviso e
+        // proseguo usando solo argv[1] e argv[2], gli altri li ignoro.
+        std::cerr << "Avviso: ricevuti " << (argc - 1)
+                  << " argomenti, uso solo i primi due e ignoro gli altri.\n";
     }
     std::string metodo;
     if (argc >= 3) {
@@ -21,17 +30,27 @@ int main(int argc, char** argv) {
                   << "Scelta [1/2]: ";
         std::string scelta;
         std::getline(std::cin, scelta);
-        if (scelta == "2" || scelta == "depina") {
+        if (scelta == "1" || scelta == "dfs") {
+            metodo = "dfs";
+        } else if (scelta == "2" || scelta == "depina") {
             metodo = "depina";
         } else {
-            metodo = "dfs";
+            std::cerr << "Scelta non valida: " << scelta << " (usa 1/dfs o 2/depina)\n";
+            return 1;
         }
         std::cout << "Metodo selezionato: " << metodo << "\n";
     }
 
     // parsing + costruzione grafo
     un_graph<int, double> G;
-    auto net = read_netlist<int, double>(argv[1], G);
+    netlist<int, double> net;
+    try {
+        net = read_netlist<int, double>(argv[1], G);
+    } catch (const std::exception& e) {
+        // es. file inesistente/non leggibile: read_netlist lancia runtime_error
+        std::cerr << "Errore nella lettura della netlist: " << e.what() << "\n";
+        return 1;
+    }
 
     // scelta del metodo per i cicli fondamentali
     std::vector<std::vector<int>> cicli;
@@ -50,7 +69,7 @@ int main(int argc, char** argv) {
                                          cicli, G);
 
     // A = B^T R B, SDP -> applicabile gradiente coniugato
-    Eigen::MatrixXd A = sys.B.transpose() * sys.R * sys.B;
+	Eigen::MatrixXd A = sys.B.transpose() * sys.r.asDiagonal() * sys.B;	
 
     // risoluzione del sistema A * x = v
     auto result = conjugate_gradient(A, sys.v);
@@ -61,9 +80,9 @@ int main(int argc, char** argv) {
     }
 
     // tensioni e correnti sui resistori (un'entrata per riga di B/R)
-    Eigen::VectorXd vR = sys.R * sys.B * result.x;
     Eigen::VectorXd iR = sys.B * result.x;
-
+	Eigen::VectorXd vR = sys.r.asDiagonal() * iR;   // = R * iR
+	
     // Stampa: itera 'components' in ordine lessicografico (l'ordine di
     // selectionSort in read_netlist), ma indicizza vR/iR con c.number() perché
     // la riga di B/R è quella, non la posizione di iterazione. Il +1 ricompensa

@@ -2,12 +2,12 @@
 
 #include "un_edge.hpp"
 
-#include<map>
-#include<set>
-#include<vector>
-#include<algorithm> //per lower_bound
-#include<stdexcept> //per out_of_range
-#include<iterator> //per back_inserter
+#include <map>
+#include <set>
+#include <vector>
+#include <algorithm> //per lower_bound
+#include <stdexcept> //per out_of_range
+#include <iterator> //per back_inserter
 
 //grafo semplice: non più di 1 arco per stessi nodi, archi pesati (peso default 1 se non specificato)
 
