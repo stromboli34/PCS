@@ -31,9 +31,9 @@ int main(int argc, char** argv) {
         std::string scelta;
         std::getline(std::cin, scelta);
         if (scelta == "1" || scelta == "Dfs") {
-            metodo = "dfs";
+            metodo = "Dfs";
         } else if (scelta == "2" || scelta == "DePina") {
-            metodo = "depina";
+            metodo = "Depina";
         } else {
             std::cerr << "Scelta non valida: " << scelta << " (usa 1/Dfs o 2/Depina)\n";
             return 1;
@@ -54,12 +54,12 @@ int main(int argc, char** argv) {
 
     // scelta del metodo per i cicli fondamentali
     std::vector<std::vector<int>> cicli;
-    if (metodo == "dfs") {
+    if (metodo == "Dfs") {
         cicli = Cicli_dfs(G);
-    } else if (metodo == "depina") {
+    } else if (metodo == "Depina") {
         cicli = Cicli_depina(G);
     } else {
-        std::cerr << "Metodo sconosciuto: " << metodo << " (usa dfs o depina)\n";
+        std::cerr << "Metodo sconosciuto: " << metodo << " (usa Dfs o Depina)\n";
         return 1;
     }
 

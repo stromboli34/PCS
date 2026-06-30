@@ -17,7 +17,7 @@ inline int dot(const std::vector<int>& a, const std::vector<int>& b) {
 }
 
 
-// Differenza Simmetrica
+// Differenza Simmetrica (XOR)
 template <typename N>
 std::vector<N> diff_simm(const std::vector<N>& a, const std::vector<N>& b) {
     std::vector<N> output(a.size());
