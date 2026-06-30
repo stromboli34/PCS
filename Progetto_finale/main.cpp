@@ -25,17 +25,17 @@ int main(int argc, char** argv) {
         metodo = argv[2];
     } else {
         std::cout << "Seleziona il metodo per i cicli fondamentali:\n"
-                  << "  1) dfs\n"
-                  << "  2) depina\n"
+                  << "  1) Dfs\n"
+                  << "  2) DePina\n"
                   << "Scelta [1/2]: ";
         std::string scelta;
         std::getline(std::cin, scelta);
-        if (scelta == "1" || scelta == "dfs") {
+        if (scelta == "1" || scelta == "Dfs") {
             metodo = "dfs";
-        } else if (scelta == "2" || scelta == "depina") {
+        } else if (scelta == "2" || scelta == "DePina") {
             metodo = "depina";
         } else {
-            std::cerr << "Scelta non valida: " << scelta << " (usa 1/dfs o 2/depina)\n";
+            std::cerr << "Scelta non valida: " << scelta << " (usa 1/Dfs o 2/Depina)\n";
             return 1;
         }
         std::cout << "Metodo selezionato: " << metodo << "\n";

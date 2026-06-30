@@ -67,8 +67,10 @@ std::vector<int> f_m_c_s_t(const un_graph<N,W>& grafo, const std::vector<N>& S_i
             N a = cammino_nodo[i];
             N b = cammino_nodo[i+1];
 
-            N u_orig = (a >= offset) ? (a - offset) : a;
-            N v_orig = (b >= offset) ? (b - offset) : b;
+            N u_orig = a;
+            if (a >= offset) u_orig = a - offset;
+            N v_orig = b;
+            if (b >= offset) v_orig = b - offset;
 
             if (u_orig == v_orig) continue;
 

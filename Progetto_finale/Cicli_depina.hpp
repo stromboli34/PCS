@@ -6,6 +6,7 @@
 
 #include <vector>
 #include <map>
+#include <set>
 
 //Cicli_depina
 
@@ -44,17 +45,21 @@ std::vector<std::vector<N>> Cicli_depina(const un_graph<N,W>& G) {
                 adj[v].push_back(u);
             }
         }
-        if (adj.empty()) continue;
+        if (adj.empty()){continue;}
         std::vector<N> ciclo;
-        N start = adj.begin()->first;
-        N prev = N(-1), curr = start;
-        do {
+        std::set<N> visitati;
+        N curr = adj.begin()->first;
+        while (visitati.find(curr) == visitati.end()) {
+            visitati.insert(curr);
             ciclo.push_back(curr);
             for (const N& next : adj[curr]) {
-                if (next != prev) { prev = curr; curr = next; break; }
+                if (visitati.find(next) == visitati.end()) {
+                    curr = next;
+                    break;
+                }
             }
-        } while (curr != start);
-        ciclo.push_back(start);
+        }
+        ciclo.push_back(ciclo.front());
         cicli.push_back(ciclo);
     }
     return cicli;
